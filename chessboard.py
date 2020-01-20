@@ -88,15 +88,18 @@ class chessboard:
         if self.board_pieces[(row1,col1)] != None:
             if self.board_pieces[(row1,col1)].color == turn:
                 piece = self.board_pieces[(row1,col1)]
-                self.board_pieces[(row1,col1)] = None
-                piece.move((row2,col2))
-                self.board_pieces[(row2,col2)] = piece
+                if(piece.move((row2,col2))):
+                    self.board_pieces[(row1,col1)] = None
+                    self.board_pieces[(row2,col2)] = piece
+                else:
+                    print(error_msg)
+                    return 
             else:
-                print(error_msg)
-                return
+                    print(error_msg)
+                    return 
         else:
             print(error_msg)
-            return
+            return 
         self.move_number += 1
         return 1
 
@@ -105,6 +108,7 @@ class chessboard:
 
 b = chessboard()
 b.showboard()
-while(b.get_move()):
+for i in range(60):
+    b.get_move()
     b.showboard()
     

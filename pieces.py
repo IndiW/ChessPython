@@ -13,16 +13,23 @@ class pawn:
         if self.color == "white":
             if destination[0] == self.position[0] + 1:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
         elif self.color == "black":
             if destination[0] == self.position[0] - 1:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
     
     def display(self):
-        return "p"
+        if self.color == "white":
+            return "wp"
+        else:
+            return "bp"
 
 
 class knight:
@@ -34,36 +41,52 @@ class knight:
         if destination[0] == self.position[0] + 1:
             if destination[1] == self.position[1] + 2:
                 self.position = destination
+                return True
             elif destination[1] == self.postion[1] - 2:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
         elif destination[0] == self.position[0] - 1:
             if destination[1] == self.position[1] + 2:
                 self.position = destination
+                return True
             elif destination[1] == self.postion[1] - 2:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
         elif destination[1] == self.position[1] + 1:
             if destination[0] == self.position[0] + 2:
                 self.position = destination
+                return True
             elif destination[0] == self.postion[0] - 2:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
         elif destination[1] == self.position[1] - 1:
             if destination[0] == self.position[0] + 2:
                 self.position = destination
+                return True
             elif destination[0] == self.postion[0] - 2:
                 self.position = destination
+                return True
             else:
                 print("That is an invalid move")
+                return False
         else:
             print("That is an invalid move")
+            return False
 
     def display(self):
-        return "N"
+        if self.color == "white":
+            return "wN"
+        else:
+            return "bN"
 
 class rook:
     def __init__(self, position, color):
@@ -73,13 +96,19 @@ class rook:
     def move(self, destination):
         if destination[0] == self.position[0]:
             self.position = destination
+            return True
         elif destination[1] == self.position[1]:
             self.position = destination
+            return True
         else:
             print("That is an invalid move")
+            return False
     
     def display(self):
-        return "R"
+        if self.color == "white":
+            return "wR"
+        else:
+            return "bR"
 
 class bishop:
     def __init__(self, position, color):
@@ -89,14 +118,17 @@ class bishop:
     def move(self, destination):
         x = abs(destination[0] - self.position[0])
         y = abs(destination[1] - self.position[1])
-        print(x)
-        print(y)
         if x == y:
             self.position = destination
+            return True
         else:
             print("That is an invalid move")
+            return False
     def display(self):
-        return "B"
+        if self.color == "white":
+            return "wB"
+        else:
+            return "bB"
 
 class king:
     def __init__(self, position, color):
@@ -106,10 +138,15 @@ class king:
     def move(self, destination):
         if (abs(destination[0] - self.position[0]) <= 1) and (abs(destination[1] - self.position[1]) <= 1):
             self.position = destination
+            return True
         else:
             print("That is an invalid move")
+            return False
     def display(self):
-        return "K"
+        if self.color == "white":
+            return "wK"
+        else:
+            return "bK"
 
 class queen:
     def __init__(self, position, color):
@@ -121,27 +158,20 @@ class queen:
         y = destination[1] - self.position[1]
         if x == y:
             self.position = destination
+            return True
         elif destination[0] == self.position[0]:
             self.position = destination
+            return True
         elif destination[1] == self.position[1]:
             self.position = destination
+            return True
         else:
             print("That is an invalid move")
+            return False
     def display(self):
-        return "Q"
+        if self.color == "white":
+            return "wQ"
+        else:
+            return "bQ"
 
 
-#newrook = king((0, 0), "white")
-#print(newrook.position)
-#newrook.move((0,1))
-#print(newrook.position)
-
-#8
-#7
-#6
-#5
-#4
-#3
-#2
-#1
-#  a b c d e f g h
