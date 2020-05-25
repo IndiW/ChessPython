@@ -1,5 +1,6 @@
 import numpy as np
 from pieces import *
+import os 
 
 class chessboard:
     def __init__(self):
@@ -45,6 +46,7 @@ class chessboard:
         self.board_pieces[(7,4)] = king((7,4),"black")
 
     def showboard(self):
+        os.system('clear')
         board_display = [[],[],[],[],[],[],[],[]]
         for i in range(8):
             for j in range(8):

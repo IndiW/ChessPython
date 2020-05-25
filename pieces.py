@@ -8,18 +8,31 @@ class pawn:
     def __init__(self, position, color):
         self.position = position
         self.color = color
+        self.move_count = 0
 
     def move(self, destination):
         if self.color == "white":
+            if self.move_count == 0:
+                if destination[0] == self.position[0] + 2:
+                    self.position = destination
+                    self.move_count += 1
+                    return True 
             if destination[0] == self.position[0] + 1:
                 self.position = destination
+                self.move_count += 1
                 return True
             else:
                 print("That is an invalid move")
                 return False
         elif self.color == "black":
+            if self.move_count == 0:
+                if destination[0] == self.position[0] - 2:
+                    self.position = destination
+                    self.move_count += 1
+                    return True 
             if destination[0] == self.position[0] - 1:
                 self.position = destination
+                self.move_count += 1
                 return True
             else:
                 print("That is an invalid move")
